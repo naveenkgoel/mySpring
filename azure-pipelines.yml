@@ -5,7 +5,7 @@ pool:
 #Your build pipeline references an undefined variable named ‘Parameters.mavenPOMFile’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 
 #steps:
--# task: Maven@3
+#- task: Maven@3
  # displayName: 'Maven app/pom.xml'
  # inputs:
   #  mavenPomFile: '$(Parameters.mavenPOMFile)'

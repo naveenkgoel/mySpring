@@ -4,11 +4,22 @@ pool:
 
 #Your build pipeline references an undefined variable named ‘Parameters.mavenPOMFile’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 
+#steps:
+-# task: Maven@3
+ # displayName: 'Maven app/pom.xml'
+ # inputs:
+  #  mavenPomFile: '$(Parameters.mavenPOMFile)'
 steps:
 - task: Maven@3
-  displayName: 'Maven app/pom.xml'
   inputs:
-    mavenPomFile: '$(Parameters.mavenPOMFile)'
+    mavenPomFile: 'app/pom.xml'
+    mavenOptions: '-Xmx3072m'
+    #javaHomeOption: 'JDKVersion'
+    #jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
